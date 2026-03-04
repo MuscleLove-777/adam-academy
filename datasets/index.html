@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ADaMデータセット構造 - ADSL・BDS・OCCDS・Otherの4クラスの詳細解説、変数一覧、サンプルデータを掲載。">
+  <title>データセット詳細 | ADaM仕様書アカデミー</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- ========== ヘッダー ========== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="site-logo">
+        <span class="logo-icon">&#x1F4CB;</span>
+        <span>ADaM仕様書アカデミー</span>
+      </a>
+      <nav class="nav-menu" aria-label="メインナビゲーション">
+        <a href="../index.html">ホーム</a>
+        <a href="../basics/index.html">ADaM基礎</a>
+        <a href="../datasets/index.html">データセット詳細</a>
+        <a href="../variables/index.html">変数辞書</a>
+        <a href="../guide/index.html">作成ガイド</a>
+        <div class="nav-dropdown" id="nav-dropdown-tools">
+          <span class="nav-dropdown-toggle nav-menu-link">ツール</span>
+          <div class="nav-dropdown-menu">
+            <a href="../tools/builder.html">仕様書ビルダー</a>
+            <a href="../tools/quiz.html">理解度クイズ</a>
+          </div>
+        </div>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="モバイルナビゲーション">
+      <a href="../index.html">ホーム</a>
+      <a href="../basics/index.html">ADaM基礎</a>
+      <a href="../datasets/index.html">データセット詳細</a>
+      <a href="../variables/index.html">変数辞書</a>
+      <a href="../guide/index.html">作成ガイド</a>
+      <span class="mobile-submenu-label">ツール</span>
+      <div class="mobile-submenu">
+        <a href="../tools/builder.html">仕様書ビルダー</a>
+        <a href="../tools/quiz.html">理解度クイズ</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========== メインコンテンツ ========== -->
+  <main>
+
+    <!-- ===== ヒーロー ===== -->
+    <section class="hero">
+      <div class="container">
+        <span class="hero-icon" aria-hidden="true">&#x1F4CA;</span>
+        <h1>ADaMデータセット構造</h1>
+        <p class="hero-subtitle">ADSL・BDS・OCCDS・Otherの4クラスを詳しく解説</p>
+      </div>
+    </section>
+
+    <!-- ===== クラス選択タブ ===== -->
+    <div class="filter-bar">
+      <div class="container">
+        <div class="ds-tabs" id="ds-tabs">
+          <button class="ds-tab active" data-class="adsl" style="--tab-color: var(--class-adsl);">ADSL</button>
+          <button class="ds-tab" data-class="bds" style="--tab-color: var(--class-bds);">BDS</button>
+          <button class="ds-tab" data-class="occds" style="--tab-color: var(--class-occds);">OCCDS</button>
+          <button class="ds-tab" data-class="other" style="--tab-color: var(--class-other);">Other</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== クラス詳細 ===== -->
+    <section class="section">
+      <div class="container" id="ds-detail-container">
+        <!-- JS で動的レンダリング -->
+        <div class="text-center text-light">
+          <p>データを読み込み中...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTAセクション ===== -->
+    <section class="section fade-in" style="background-color: var(--color-white);">
+      <div class="container text-center">
+        <h2 class="section-title">次のステップ</h2>
+        <p class="text-light mb-4">各変数の詳細情報は変数辞書で確認できます。</p>
+        <div class="hero-buttons">
+          <a href="../variables/index.html" class="btn btn-primary btn-lg">変数辞書へ</a>
+          <a href="../guide/index.html" class="btn btn-outline btn-lg">作成ガイドへ</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== フッター ========== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>ADaM仕様書アカデミー</h4>
+          <p class="text-sm" style="color: rgba(255,255,255,0.6); line-height: 1.8;">
+            CDISC ADaM標準に基づく解析データセット仕様書の作成方法を体系的に学べるサイトです。
+          </p>
+        </div>
+        <div class="footer-section">
+          <h4>サイトマップ</h4>
+          <ul>
+            <li><a href="../index.html">ホーム</a></li>
+            <li><a href="../basics/index.html">ADaM基礎</a></li>
+            <li><a href="../datasets/index.html">データセット詳細</a></li>
+            <li><a href="../variables/index.html">変数辞書</a></li>
+            <li><a href="../guide/index.html">作成ガイド</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>ツール</h4>
+          <ul>
+            <li><a href="../tools/builder.html">仕様書ビルダー</a></li>
+            <li><a href="../tools/quiz.html">理解度クイズ</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>リンク</h4>
+          <ul>
+            <li><a href="https://www.cdisc.org/" target="_blank" rel="noopener noreferrer">CDISC.org</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>本サイトはADaM学習を目的とした参考資料です。公式ガイドラインはCDISC.orgをご参照ください。</p>
+        <p>&copy; 2025 ADaM仕様書アカデミー All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/datasets.js"></script>
+</body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ADaMの基礎知識 - CDISC標準の全体像、ADaMの位置づけ、データセットクラス、SDTMとの関係を体系的に解説。">
+  <title>ADaM基礎 | ADaM仕様書アカデミー</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- ========== ヘッダー ========== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="site-logo">
+        <span class="logo-icon">&#x1F4CB;</span>
+        <span>ADaM仕様書アカデミー</span>
+      </a>
+
+      <!-- デスクトップナビ -->
+      <nav class="nav-menu" aria-label="メインナビゲーション">
+        <a href="../index.html">ホーム</a>
+        <a href="../basics/index.html">ADaM基礎</a>
+        <a href="../datasets/index.html">データセット詳細</a>
+        <a href="../variables/index.html">変数辞書</a>
+        <a href="../guide/index.html">作成ガイド</a>
+        <div class="nav-dropdown" id="nav-dropdown-tools">
+          <span class="nav-dropdown-toggle nav-menu-link">ツール</span>
+          <div class="nav-dropdown-menu">
+            <a href="../tools/builder.html">仕様書ビルダー</a>
+            <a href="../tools/quiz.html">理解度クイズ</a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- ハンバーガー -->
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- モバイルメニュー -->
+    <nav class="mobile-menu" id="mobile-menu" aria-label="モバイルナビゲーション">
+      <a href="../index.html">ホーム</a>
+      <a href="../basics/index.html">ADaM基礎</a>
+      <a href="../datasets/index.html">データセット詳細</a>
+      <a href="../variables/index.html">変数辞書</a>
+      <a href="../guide/index.html">作成ガイド</a>
+      <span class="mobile-submenu-label">ツール</span>
+      <div class="mobile-submenu">
+        <a href="../tools/builder.html">仕様書ビルダー</a>
+        <a href="../tools/quiz.html">理解度クイズ</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========== メインコンテンツ ========== -->
+  <main>
+
+    <!-- ===== ヒーロー ===== -->
+    <section class="hero">
+      <div class="container">
+        <span class="hero-icon" aria-hidden="true">&#x1F4D6;</span>
+        <h1>ADaMの基礎を学ぶ</h1>
+        <p class="hero-subtitle">臨床試験データ標準の全体像とADaMの位置づけ</p>
+      </div>
+    </section>
+
+    <!-- ===== セクション1: CDISCとは ===== -->
+    <section class="section fade-in" id="cdisc">
+      <div class="container">
+        <h2 class="section-title">CDISCとは</h2>
+        <p class="text-center text-light mb-4">CDISC（Clinical Data Interchange Standards Consortium）は、臨床試験データの標準規格を策定する国際的な非営利団体です。FDA・PMDAへのデータ申請では、CDISC標準に準拠したデータが求められます。</p>
+
+        <p class="text-center text-light mb-4">臨床試験データは以下のフローで標準化されます。各ステップをクリックすると詳細が表示されます。</p>
+
+        <!-- CDISCフロー図 -->
+        <div class="cdisc-flow" id="cdisc-flow">
+          <div class="cdisc-flow-steps">
+            <div class="cdisc-flow-step" data-step="cdash">
+              <div class="cdisc-flow-icon">&#x1F4DD;</div>
+              <div class="cdisc-flow-label">CDASH</div>
+              <div class="cdisc-flow-sub">データ収集</div>
+            </div>
+            <div class="cdisc-flow-arrow">&#x27A1;</div>
+            <div class="cdisc-flow-step" data-step="sdtm">
+              <div class="cdisc-flow-icon">&#x1F4C1;</div>
+              <div class="cdisc-flow-label">SDTM</div>
+              <div class="cdisc-flow-sub">データ集計</div>
+            </div>
+            <div class="cdisc-flow-arrow">&#x27A1;</div>
+            <div class="cdisc-flow-step active" data-step="adam">
+              <div class="cdisc-flow-icon">&#x1F4CA;</div>
+              <div class="cdisc-flow-label">ADaM</div>
+              <div class="cdisc-flow-sub">解析データ</div>
+            </div>
+            <div class="cdisc-flow-arrow">&#x27A1;</div>
+            <div class="cdisc-flow-step" data-step="define">
+              <div class="cdisc-flow-icon">&#x1F4C4;</div>
+              <div class="cdisc-flow-label">define.xml</div>
+              <div class="cdisc-flow-sub">メタデータ</div>
+            </div>
+          </div>
+          <div class="cdisc-flow-detail" id="cdisc-flow-detail">
+            <div class="cdisc-flow-detail-title" id="cdisc-flow-detail-title">ADaM（Analysis Data Model）</div>
+            <div class="cdisc-flow-detail-text" id="cdisc-flow-detail-text">SDTMデータを基に、統計解析に直接使用できる形式でデータを構造化する標準モデル。変化量・ベースライン値の導出、解析フラグの設定等を行い、TFL（表・図・一覧）の出力元となります。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== セクション2: ADaMとは ===== -->
+    <section class="section fade-in" id="adam" style="background-color: var(--color-white);">
+      <div class="container">
+        <h2 class="section-title">ADaMとは</h2>
+        <p class="mb-4">ADaM（Analysis Data Model）は、CDISCが策定した解析データの標準モデルです。SDTMデータを基に、統計解析に直接使用できる形式でデータを構造化します。</p>
+
+        <div class="card mb-4" style="border-left: 4px solid var(--color-accent);">
+          <h3>ADaMの目的</h3>
+          <ul class="basics-list">
+            <li>統計解析に直接使用できるデータセットを提供する</li>
+            <li>解析結果の再現性（traceability）を確保する</li>
+            <li>規制当局（FDA/PMDA）への電子申請データの標準形式を提供する</li>
+            <li>解析プログラムの効率化と標準化を実現する</li>
+          </ul>
+        </div>
+
+        <h3 class="mb-3">4つのデータセットクラス</h3>
+        <p class="mb-4">ADaMデータセットは、その構造により4つのクラスに分類されます。</p>
+
+        <div class="grid grid-4" id="basics-class-cards">
+          <!-- JS で動的生成 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== セクション3: SDTMとADaMの関係 ===== -->
+    <section class="section fade-in" id="sdtm-adam">
+      <div class="container">
+        <h2 class="section-title">SDTMとADaMの関係</h2>
+        <p class="text-center text-light mb-4">SDTMがソースデータ、ADaMが解析用データという関係にあります。</p>
+
+        <div class="comparison-container">
+          <div class="comparison-card comparison-sdtm">
+            <div class="comparison-header">
+              <span class="comparison-icon">&#x1F4C1;</span>
+              <h3>SDTM（ソースデータ）</h3>
+            </div>
+            <ul class="basics-list">
+              <li>CRF（症例報告書）のデータを標準化</li>
+              <li>収集データの「そのまま」の記録</li>
+              <li>ドメイン単位の横持ち構造が基本</li>
+              <li>規制当局への申請用フォーマット</li>
+              <li>DM, AE, LB, VS, EX 等のドメイン</li>
+            </ul>
+          </div>
+
+          <div class="comparison-arrow">
+            <div class="comparison-arrow-label">変換・導出</div>
+            <div class="comparison-arrow-icon">&#x27A1;</div>
+            <div class="comparison-arrow-details">
+              <span>フラグ付与</span>
+              <span>値の導出</span>
+              <span>構造変換</span>
+            </div>
+          </div>
+
+          <div class="comparison-card comparison-adam">
+            <div class="comparison-header">
+              <span class="comparison-icon">&#x1F4CA;</span>
+              <h3>ADaM（解析データ）</h3>
+            </div>
+            <ul class="basics-list">
+              <li>統計解析に直接使用できる形式</li>
+              <li>ベースライン値・変化量等を導出済み</li>
+              <li>解析目的に応じた構造（ADSL/BDS/OCCDS）</li>
+              <li>TFL出力の直接的なソース</li>
+              <li>ADSL, ADAE, ADLB, ADVS 等</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== セクション4: 仕様書の構成要素 ===== -->
+    <section class="section fade-in" id="spec-elements" style="background-color: var(--color-white);">
+      <div class="container">
+        <h2 class="section-title">仕様書の構成要素</h2>
+        <p class="text-center text-light mb-4">ADaM仕様書には以下の要素が含まれます。</p>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>要素</th>
+                <th>説明</th>
+                <th>例</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="要素"><strong>データセット名</strong></td>
+                <td data-label="説明">ADaMデータセットの名称（最大8文字）</td>
+                <td data-label="例"><span class="var-name">ADSL</span>, <span class="var-name">ADAE</span>, <span class="var-name">ADLB</span></td>
+              </tr>
+              <tr>
+                <td data-label="要素"><strong>データセットラベル</strong></td>
+                <td data-label="説明">データセットの説明的な名称（最大40文字）</td>
+                <td data-label="例">Subject-Level Analysis Dataset</td>
+              </tr>
+              <tr>
+                <td data-label="要素"><strong>変数名</strong></td>
+                <td data-label="説明">各変数の名称（最大8文字、英大文字・数字）</td>
+                <td data-label="例"><span class="var-name">USUBJID</span>, <span class="var-name">AVAL</span>, <span class="var-name">CHG</span></td>
+              </tr>
+              <tr>
+                <td data-label="要素"><strong>変数ラベル</strong></td>
+                <td data-label="説明">変数の説明ラベル（最大40文字）</td>
+                <td data-label="例">Unique Subject Identifier</td>
+              </tr>
+              <tr>
+                <td data-label="要素"><strong>型（Type）</strong></td>
+                <td data-label="説明">変数のデータ型</td>
+                <td data-label="例">Char（文字型）, Num（数値型）</td>
+              </tr>
+              <tr>
+                <td data-label="要素"><strong>長さ（Length）</strong></td>
+                <td data-label="説明">変数の最大長さ</td>
+                <td data-label="例">8, 20, 200</td>
+              </tr>
+              <tr>
+                <td data-label="要素"><strong>Core</strong></td>
+                <td data-label="説明">変数の必須度</td>
+                <td data-label="例">Req（必須）, Cond（条件付き）, Perm（任意）</td>
+              </tr>
+              <tr>
+                <td data-label="要素"><strong>ソース/導出方法</strong></td>
+                <td data-label="説明">変数値のソースまたは導出ロジック</td>
+                <td data-label="例">SDTM.DM.AGE, 導出: AVAL - BASE</td>
+              </tr>
+              <tr>
+                <td data-label="要素"><strong>コメント</strong></td>
+                <td data-label="説明">補足説明や注意事項</td>
+                <td data-label="例">SAPの定義に基づく、投与後のみ計算</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== セクション5: 用語集 ===== -->
+    <section class="section fade-in" id="glossary">
+      <div class="container">
+        <h2 class="section-title">用語集</h2>
+        <p class="text-center text-light mb-3">ADaM仕様書でよく使われる用語をまとめました。</p>
+
+        <!-- 検索ボックス -->
+        <div class="glossary-search-wrapper mb-4">
+          <input type="text" id="glossary-search" class="form-input" placeholder="用語を検索...（例: SDTM, BDS, SAP）">
+        </div>
+
+        <div class="grid grid-3" id="glossary-cards">
+          <!-- JS で動的生成 -->
+        </div>
+
+        <p class="text-center text-sm text-light mt-3" id="glossary-count"></p>
+      </div>
+    </section>
+
+    <!-- ===== CTAセクション ===== -->
+    <section class="section fade-in" style="background-color: var(--color-white);">
+      <div class="container text-center">
+        <h2 class="section-title">次のステップ</h2>
+        <p class="text-light mb-4">基礎を理解したら、各データセットクラスの詳細を学びましょう。</p>
+        <div class="hero-buttons">
+          <a href="../datasets/index.html" class="btn btn-primary btn-lg">データセット詳細へ</a>
+          <a href="../variables/index.html" class="btn btn-outline btn-lg">変数辞書へ</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== フッター ========== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>ADaM仕様書アカデミー</h4>
+          <p class="text-sm" style="color: rgba(255,255,255,0.6); line-height: 1.8;">
+            CDISC ADaM標準に基づく解析データセット仕様書の作成方法を体系的に学べるサイトです。基礎知識から実践的なツールまで、仕様書作成に必要な情報を提供します。
+          </p>
+        </div>
+        <div class="footer-section">
+          <h4>サイトマップ</h4>
+          <ul>
+            <li><a href="../index.html">ホーム</a></li>
+            <li><a href="../basics/index.html">ADaM基礎</a></li>
+            <li><a href="../datasets/index.html">データセット詳細</a></li>
+            <li><a href="../variables/index.html">変数辞書</a></li>
+            <li><a href="../guide/index.html">作成ガイド</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>ツール</h4>
+          <ul>
+            <li><a href="../tools/builder.html">仕様書ビルダー</a></li>
+            <li><a href="../tools/quiz.html">理解度クイズ</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>リンク</h4>
+          <ul>
+            <li><a href="https://www.cdisc.org/" target="_blank" rel="noopener noreferrer">CDISC.org</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>本サイトはADaM学習を目的とした参考資料です。公式ガイドラインはCDISC.orgをご参照ください。</p>
+        <p>&copy; 2025 ADaM仕様書アカデミー All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/basics.js"></script>
+</body>
+</html>
