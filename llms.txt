@@ -1,0 +1,21 @@
+# ADaM仕様書アカデミー | ADaM仕様書の教科書
+
+> ADaM仕様書アカデミー - CDISC ADaM標準に基づく解析データセット仕様書の作成方法をステップバイステップで学ぶ。ADaM基礎・変数辞書・仕様書ビルダーを提供。
+
+## Main Pages
+
+- [adam academy](https://musclelove-777.github.io/adam-academy/): main page of ADaM仕様書アカデミー | ADaM仕様書の教科書.
+- [basics](https://musclelove-777.github.io/adam-academy/basics/): main page of ADaM仕様書アカデミー | ADaM仕様書の教科書.
+- [datasets](https://musclelove-777.github.io/adam-academy/datasets/): main page of ADaM仕様書アカデミー | ADaM仕様書の教科書.
+- [guide](https://musclelove-777.github.io/adam-academy/guide/): main page of ADaM仕様書アカデミー | ADaM仕様書の教科書.
+- [variables](https://musclelove-777.github.io/adam-academy/variables/): main page of ADaM仕様書アカデミー | ADaM仕様書の教科書.
+
+## Articles (most recent)
+
+- [builder.html](https://musclelove-777.github.io/adam-academy/tools/builder.html): article on ADaM仕様書アカデミー | ADaM仕様書の教科書.
+- [quiz.html](https://musclelove-777.github.io/adam-academy/tools/quiz.html): article on ADaM仕様書アカデミー | ADaM仕様書の教科書.
+
+## About this file
+
+This llms.txt follows the llmstxt.org proposal and lists the main entry points of this site for LLM-based crawlers and AI search agents.
+Generated automatically from sitemap.xml. Source repository: https://github.com/MuscleLove-777/adam-academy
